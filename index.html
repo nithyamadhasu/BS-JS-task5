@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+</head>
+<body>
+    <form id="contactForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <div id="nameError" style="color:red;"></div>
+
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email"><br>
+        <div id="emailError" style="color:red;"></div>
+
+        <label for="website">Website:</label><br>
+        <input type="text" id="website" name="website"><br>
+        <div id="websiteError" style="color:red;"></div>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message"></textarea><br>
+        <div id="messageError" style="color:red;"></div>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var website = document.getElementById('website').value;
+        var message = document.getElementById('message').value;
+
+        if (!name) {
+            document.getElementById('nameError').textContent = 'This field is required';
+        } else {
+            document.getElementById('nameError').textContent = '';
+        }
+
+        if (!email || !email.includes('@')) {
+            document.getElementById('emailError').textContent = 'A valid email address is required';
+        } else {
+            document.getElementById('emailError').textContent = '';
+        }
+
+        if (!website || !website.startsWith('http')) {
+            document.getElementById('websiteError').textContent = 'A valid url is required';
+        } else {
+            document.getElementById('websiteError').textContent = '';
+        }
+
+        if (!message) {
+            document.getElementById('messageError').textContent = 'This field is required';
+        } else {
+            document.getElementById('messageError').textContent = '';
+        }
+    });
+    </script>
+</body>
+</html>
